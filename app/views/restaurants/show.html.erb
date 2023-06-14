@@ -1,0 +1,23 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <ul class="list-groupe">
+    <li class="list-group-item">
+    <p><%= @restaurant.address %></p>
+    <p><%= @restaurant.phone_number %></p>
+    <p><%= @restaurant.category %></p>
+    <div class="card">
+      <% arreviews = Array.new %>
+      <% @restaurant.reviews.each do |review| %>
+        <div class="card d-inline-flex justify-content-center justify-content-lg-between m-2">
+          <p><%= review.content %></p>
+          <% arreviews << review.rating %>
+          <% ttreviews = ((arreviews.sum)/(arreviews.length)) %>
+          <p class="align-self-end"><%= review.rating %></p>
+          <% ttreviews%>
+        </div>
+      <% end %>
+    </div>
+  </ul>
+
+<%= link_to "Add a new review", new_restaurant_review_path(@restaurant), style: "text-decoration:none" %>
+<%= link_to "Back to restaurants", restaurants_path, style: "text-decoration:none" %>
